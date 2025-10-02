@@ -12,22 +12,22 @@
     body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial; color:var(--ink); background:var(--bg); line-height:1.6; }
     header { text-align:center; padding:64px 24px 24px; }
     h1 { margin:0 0 10px; font-size:40px; }
-    p.lead { margin:0 auto; max-width:720px; color:var(--muted); }
+    p.lead { margin:0 auto; max-width:720px; color:#444; }
 
     /* Journey container */
     .journey { position:relative; max-width:1100px; margin:0 auto; padding:0 16px 80px; z-index:0; }
 
-    /* Curvy path sits BEHIND content and stretches full height of the journey */
+    /* Curvy path sits behind content and spans the full journey height */
     svg.curve {
       position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%);
-      width: clamp(260px, 34vw, 480px); height: 100%;
+      width: clamp(280px, 36vw, 520px); height:100%;
       pointer-events:none; z-index:0;
     }
     svg.curve path { fill:none; stroke:#cfd9ff; stroke-width:6; stroke-linecap:round; }
 
-    /* Traveler icon moves along the curve (viewport coords) */
+    /* Traveler icon (positioned by JS along curve) */
     .traveler {
-      position:fixed; width:48px; height:48px; z-index:3; /* transform set in JS */
+      position:fixed; width:48px; height:48px; z-index:3;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,.18));
     }
     .traveler svg { width:48px; height:48px; }
@@ -41,7 +41,7 @@
     .stop.right { justify-content:flex-end; }
 
     .card {
-      width:min(520px, 92vw);
+      width:min(560px, 92vw);
       background:var(--card); border:1px solid #e9eef6; border-radius:16px; padding:18px;
       box-shadow: 0 4px 10px rgba(16,24,40,.06);
     }
@@ -49,8 +49,16 @@
     .card p { margin:0; color:#2b2b2b; }
     .media img { width:100%; border-radius:12px; margin-top:10px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
 
-    /* Collage grid for multi-image sections */
+    /* Collage grids */
     .media-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:10px; }
+    .media-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+    /* ALL PHOTOS section */
+    .gallery { margin:60px auto 0; max-width:1100px; padding:0 16px; }
+    .gallery h2 { text-align:center; margin:0 0 12px; }
+    .gallery p { text-align:center; margin:0 0 20px; color:#444; }
+    .gallery-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px; }
+    .gallery-grid img { width:100%; height:auto; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
 
     /* Small screens */
     @media (max-width: 820px) {
@@ -58,7 +66,7 @@
       .card { width:100%; }
     }
 
-    footer { text-align:center; padding:36px 16px 64px; color:var(--muted); }
+    footer { text-align:center; padding:36px 16px 64px; color:#666; }
     a { color:#0b63ff; text-decoration:none; }
     a:hover { text-decoration:underline; }
   </style>
@@ -70,21 +78,18 @@
   </header>
 
   <div class="journey" id="journey">
-    <!-- Curvy SVG path (wide swings so it looks clearly curvy) -->
-    <svg class="curve" viewBox="0 0 480 2000" preserveAspectRatio="none">
-      <!-- Snake down the page, weaving left/right -->
+    <!-- Curvy SVG path -->
+    <svg class="curve" viewBox="0 0 520 2200" preserveAspectRatio="none">
       <path id="path"
-        d="
-          M 240 0
-          C 60 140,   420 280,  240 420
-          S  60 700,  240 840
-          S 420 1120, 240 1260
-          S  60 1540, 240 1680
-          S 420 1860, 240 2000
-        " />
+        d="M 260 0
+           C  60 160,  460 320, 260 480
+           S  60 800,  260 960
+           S 460 1280, 260 1440
+           S  60 1760, 260 1920
+           S 460 2080, 260 2200" />
     </svg>
 
-    <!-- Traveler (positioned by JS along the curve) -->
+    <!-- Traveler -->
     <div class="traveler" aria-hidden="true">
       <svg viewBox="0 0 64 64">
         <circle cx="34" cy="10" r="6" fill="#111"/>
@@ -95,112 +100,133 @@
 
     <!-- Stops -->
     <div class="stops">
-      <!-- 1 -->
+      <!-- 1. Nature / Hudson (fish.jpg) -->
       <div class="stop left">
         <div class="card">
           <h2>Upstate Roots & The Hudson</h2>
           <p>I grew up near the Hudson River in upstate New York, where environmentalism was part of everyday life. Those projects sparked my curiosity for evidence and measurement—data science I didn’t yet know I was doing.</p>
-          <div class="media"><img src="images/fish.jpg" alt="Hudson River environmental work"></div>
+          <div class="media"><img src="images/fish.jpg" alt="Hudson River environmental work (fish.jpg)"></div>
         </div>
       </div>
 
-      <!-- 2 -->
+      <!-- 2. Seed Scholars (seed.png) -->
       <div class="stop right">
         <div class="card">
           <h2>Seed Scholars & Starting Early</h2>
           <p>At UC Berkeley I joined the Seed Scholars Honors Program, a community for minoritized students in STEM. Starting early gave me space to explore, ask questions, and find mentors.</p>
-          <div class="media"><img src="images/seed.png" alt="Seed Scholars Honors Program"></div>
+          <div class="media"><img src="images/seed.png" alt="Seed Scholars Honors Program (seed.png)"></div>
         </div>
       </div>
 
-      <!-- 3 (combined learning + teaching with collage) -->
+      <!-- 3. Learning & Teaching combined (data6.png, data8logo.png, data100.png, teaching.jpg) -->
       <div class="stop left">
         <div class="card">
           <h2>Discovering Data Science & Paying It Forward</h2>
           <p>I discovered data science through <strong>Data&nbsp;6</strong> (my first code!), then deepened it in <strong>Data&nbsp;8</strong> and <strong>Data&nbsp;100</strong>. Those courses shaped how I think about experimentation and evidence. Wanting others to feel that same spark, I became a tutor and later a TA, helping students navigate the very classes that changed my path.</p>
           <div class="media media-grid">
-            <img src="images/data6.png" alt="Data 6 Intro Course">
-            <img src="images/data8logo.png" alt="Data 8 Logo">
-            <img src="images/data100.png" alt="Data 100">
-            <img src="images/teaching.jpg" alt="Teaching and mentoring">
+            <img src="images/data6.png" alt="Data 6 Intro Course (data6.png)">
+            <img src="images/data8logo.png" alt="Data 8 Logo (data8logo.png)">
+            <img src="images/data100.png" alt="Data 100 (data100.png)">
+            <img src="images/teaching.jpg" alt="Teaching and mentoring (teaching.jpg)">
           </div>
         </div>
       </div>
 
-      <!-- 4 -->
+      <!-- 4. Askademia (aied.jpg) -->
       <div class="stop right">
         <div class="card">
           <h2>Research: Askademia</h2>
           <p>As a Data&nbsp;100 TA, I joined research with Professor Narges Norouzi. We built <strong>Askademia</strong>, a real-time AI system for student support—work that earned <strong>Best Paper</strong> at AIED.</p>
           <p><a href="https://www.springerprofessional.de/en/askademia-a-real-time-ai-system-for-automatic-responses-to-stude/51244754" target="_blank" rel="noopener">Read the paper →</a></p>
-          <div class="media"><img src="images/aied.jpg" alt="Askademia AIED award"></div>
+          <div class="media"><img src="images/aied.jpg" alt="Askademia AIED award (aied.jpg)"></div>
         </div>
       </div>
 
-      <!-- 5 -->
+      <!-- 5. Autodesk (autodesk.jpg) -->
       <div class="stop left">
         <div class="card">
           <h2>Into Industry — Autodesk</h2>
           <p>Research led me to AI agents and a Machine Learning Engineer internship at Autodesk. I worked on agentic systems that supported real teams—hands-on, product-minded AI.</p>
-          <div class="media"><img src="images/autodesk.jpg" alt="Autodesk internship"></div>
+          <div class="media"><img src="images/autodesk.jpg" alt="Autodesk internship (autodesk.jpg)"></div>
         </div>
       </div>
 
-      <!-- 6 -->
+      <!-- 6. Service & Music (grammy.jpg) -->
       <div class="stop right">
         <div class="card">
           <h2>Service & Music</h2>
           <p>Alongside engineering, I joined a nonprofit consulting club and partnered with music organizations. I grew up playing trumpet—contributing here felt like coming home.</p>
-          <div class="media"><img src="images/grammy.jpg" alt="Music nonprofit collaborations"></div>
+          <div class="media"><img src="images/grammy.jpg" alt="Music nonprofit collaborations (grammy.jpg)"></div>
         </div>
       </div>
 
-      <!-- 7 -->
+      <!-- 7. Stages & Community (sfjazz.png) -->
       <div class="stop left">
         <div class="card">
           <h2>Practice, Stages, Community</h2>
           <p>Community and performance shaped my sense of craft—attention to detail, deliberate repetition, and sharing the stage generously.</p>
-          <div class="media"><img src="images/sfjazz.png" alt="SFJAZZ and music community"></div>
+          <div class="media"><img src="images/sfjazz.png" alt="SFJAZZ and music community (sfjazz.png)"></div>
         </div>
       </div>
 
-      <!-- 8 -->
+      <!-- 8. Creative Curiosity (boston.jpg) -->
       <div class="stop right">
         <div class="card">
           <h2>Creative Curiosity</h2>
           <p>I love the intersection of making and meaning—whether in a rehearsal hall or a data notebook. Curiosity is the through-line.</p>
-          <div class="media"><img src="images/boston.jpg" alt="Concert hall / Boston arts"></div>
+          <div class="media"><img src="images/boston.jpg" alt="Concert hall / Boston arts (boston.jpg)"></div>
         </div>
       </div>
 
-      <!-- 9 -->
+      <!-- 9. Italy (photo.jpg) -->
       <div class="stop left">
         <div class="card">
           <h2>Studying Abroad — Italy</h2>
           <p>Now I’m in Italy taking art classes, applying to roles, and exploring what’s next. It’s a season of learning, building, and seeing with fresh eyes.</p>
-          <div class="media"><img src="images/photo.jpg" alt="Abroad in Italy"></div>
+          <div class="media"><img src="images/photo.jpg" alt="Abroad in Italy (photo.jpg)"></div>
         </div>
       </div>
 
-      <!-- 10 -->
+      <!-- 10. Making & Prints (print.jpg) -->
       <div class="stop right">
         <div class="card">
           <h2>Making Things, Sharing Work</h2>
           <p>Whether code, curriculum, or prints—I like making artifacts that help others. That’s the kind of work I want to keep doing.</p>
-          <div class="media"><img src="images/print.jpg" alt="Art prints and creative work"></div>
+          <div class="media"><img src="images/print.jpg" alt="Art prints and creative work (print.jpg)"></div>
         </div>
       </div>
 
-      <!-- 11 -->
+      <!-- 11. What’s Next (teaching.jpg reused intentionally to show continuity) -->
       <div class="stop left">
         <div class="card">
           <h2>What’s Next</h2>
           <p>I’m exploring roles where I can bridge AI, product, and pedagogy—shipping helpful, human-centered tools while continuing to learn.</p>
-          <div class="media"><img src="images/teaching.jpg" alt="Continuing to teach and build"></div>
+          <div class="media"><img src="images/teaching.jpg" alt="Continuing to teach and build (teaching.jpg)"></div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ALL PHOTOS (safety net to ensure every image appears on the page) -->
+  <section class="gallery" aria-labelledby="all-photos">
+    <h2 id="all-photos">All Photos</h2>
+    <p>Every image used on this site, collected in one place.</p>
+    <div class="gallery-grid">
+      <img src="images/fish.jpg" alt="fish.jpg">
+      <img src="images/seed.png" alt="seed.png">
+      <img src="images/data6.png" alt="data6.png">
+      <img src="images/data8logo.png" alt="data8logo.png">
+      <img src="images/data100.png" alt="data100.png">
+      <img src="images/teaching.jpg" alt="teaching.jpg">
+      <img src="images/aied.jpg" alt="aied.jpg">
+      <img src="images/autodesk.jpg" alt="autodesk.jpg">
+      <img src="images/grammy.jpg" alt="grammy.jpg">
+      <img src="images/sfjazz.png" alt="sfjazz.png">
+      <img src="images/boston.jpg" alt="boston.jpg">
+      <img src="images/photo.jpg" alt="photo.jpg">
+      <img src="images/print.jpg" alt="print.jpg">
+    </div>
+  </section>
 
   <footer>© <span id="y"></span> Azalea Bailey — made with curiosity</footer>
 
