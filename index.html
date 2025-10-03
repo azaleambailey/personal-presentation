@@ -14,7 +14,6 @@
 
     .journey { position:relative; max-width:1100px; margin:0 auto; padding:0 16px 80px; z-index:0; }
 
-    /* Curvy path behind the content */
     svg.curve {
       position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%);
       width: clamp(280px, 36vw, 520px); height:100%;
@@ -62,7 +61,6 @@
   </header>
 
   <div class="journey" id="journey">
-    <!-- Curvy SVG path -->
     <svg class="curve" viewBox="0 0 520 2200" preserveAspectRatio="none">
       <path id="path"
         d="M 260 0
@@ -73,13 +71,12 @@
            S 460 2080, 260 2200" />
     </svg>
 
-    <!-- Stops -->
     <div class="stops">
       <!-- 1 -->
       <div class="stop left">
         <div class="card">
           <h2>Upstate Roots and the Hudson</h2>
-          <p>I grew up near the Hudson River in upstate New York. I spent a lot of time outside, helping with environmental projects and learning to notice small details. Only later did I realize that I was already bumping into data work. I just did not have the words or tools yet.</p>
+          <p>I grew up near the Hudson River in Upstate New York. I spent a lot of time outside, helping with environmental projects and learning to notice small details. Only later did I realize that I was already bumping into data science. I just did not have the words or tools yet.</p>
           <div class="media"><img src="images/fish.jpg" alt="Hudson River environmental work"></div>
         </div>
       </div>
@@ -93,11 +90,11 @@
         </div>
       </div>
 
-      <!-- 3 combined -->
+      <!-- 3 -->
       <div class="stop left">
         <div class="card">
           <h2>Learning Data Science and Paying It Forward</h2>
-          <p>My first real step was Data 6, where I wrote my first lines of code. That led to Data 8 and Data 100. I began to see how careful thinking, a bit of math, and good questions could turn messy information into something useful. I wanted other students to feel that click, so I tutored and then served as a TA.</p>
+          <p>My first real step was Data 6, where I wrote my first lines of code. That led to Data 8 and Data 100. I began to see how careful thinking, a bit of math, and good questions could turn messy information into something useful. I wanted other students to feel that click, so I tutored and then became a teaching assistant (TA).</p>
           <div class="media media-grid">
             <img src="images/data6.png" alt="Data 6 Intro Course">
             <img src="images/data8logo.png" alt="Data 8">
@@ -111,7 +108,7 @@
       <div class="stop right">
         <div class="card">
           <h2>Research and Askademia</h2>
-          <p>As a Data 100 TA I joined research with Professor Narges Norouzi. Together we built Askademia, a real time AI system that helps answer student questions. Our paper received Best Paper at AIED, which was a proud and energizing moment.</p>
+          <p>As a Data 100 TA I joined research with Professor Narges Norouzi. Together we built Askademia, a real time AI system that helps answer student questions. Our paper received Best Paper at AIED.</p>
           <p><a href="https://www.springerprofessional.de/en/askademia-a-real-time-ai-system-for-automatic-responses-to-stude/51244754" target="_blank" rel="noopener">Read the paper</a></p>
           <div class="media"><img src="images/aied.jpg" alt="Askademia AIED award"></div>
         </div>
@@ -135,23 +132,9 @@
         </div>
       </div>
 
-      <!-- 7 -->
-      <div class="stop left">
-        <div class="card">
-          <h2>Practice, Stages, and Community</h2>
-          <p>Music taught me patience and care. Rehearsal after rehearsal, you notice that small improvements add up. That mindset carries into my work with data and product, where clarity and iteration matter.</p>
-          <div class="media"><img src="images/sfjazz.png" alt="SFJAZZ and music community"></div>
-        </div>
-      </div>
+      <!-- (Removed SFJAZZ section) -->
 
-      <!-- 8 -->
-      <div class="stop right">
-        <div class="card">
-          <h2>Creative Curiosity</h2>
-          <p>I like the space where making meets meaning. Sometimes that looks like a notebook full of experiments. Sometimes it is a show or a small tool that makes someone’s day a little easier.</p>
-          <div class="media"><img src="images/boston.jpg" alt="Concert hall and arts"></div>
-        </div>
-      </div>
+      <!-- (Removed Boston Symphony section) -->
 
       <!-- 9 -->
       <div class="stop left">
@@ -182,8 +165,7 @@
     </div>
   </div>
 
-
-  <footer>© <span id="y"></span> Azalea Bailey</footer>
+  <footer> <span id="y"></span> Azalea Bailey</footer>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
