@@ -5,19 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Azalea Bailey — Journey</title>
   <style>
-    :root {
-      --ink:#111; --muted:#666; --card:#fff; --accent:#3a7afe; --bg:#f7f9fc;
-    }
+    :root { --ink:#111; --muted:#666; --card:#fff; --accent:#3a7afe; --bg:#f7f9fc; }
     * { box-sizing: border-box; }
     body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial; color:var(--ink); background:var(--bg); line-height:1.6; }
     header { text-align:center; padding:64px 24px 24px; }
     h1 { margin:0 0 10px; font-size:40px; }
     p.lead { margin:0 auto; max-width:720px; color:#444; }
 
-    /* Journey container */
     .journey { position:relative; max-width:1100px; margin:0 auto; padding:0 16px 80px; z-index:0; }
 
-    /* Curvy path sits behind content and spans the full journey height */
+    /* Curvy path behind the content */
     svg.curve {
       position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%);
       width: clamp(280px, 36vw, 520px); height:100%;
@@ -25,7 +22,6 @@
     }
     svg.curve path { fill:none; stroke:#cfd9ff; stroke-width:6; stroke-linecap:round; }
 
-    /* Stops alternate left/right around the center curve */
     .stops { position:relative; z-index:1; }
     .stop { position:relative; margin:120px 0; display:flex; }
     .stop.left  { justify-content:flex-start; }
@@ -40,18 +36,15 @@
     .card p { margin:0; color:#2b2b2b; }
     .media img { width:100%; border-radius:12px; margin-top:10px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
 
-    /* Collage grids */
     .media-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:10px; }
     .media-grid.three { grid-template-columns: repeat(3, 1fr); }
 
-    /* ALL PHOTOS section */
     .gallery { margin:60px auto 0; max-width:1100px; padding:0 16px; }
     .gallery h2 { text-align:center; margin:0 0 12px; }
     .gallery p { text-align:center; margin:0 0 20px; color:#444; }
     .gallery-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px; }
     .gallery-grid img { width:100%; height:auto; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
 
-    /* Small screens */
     @media (max-width: 820px) {
       .stop { margin:84px 0; }
       .card { width:100%; }
@@ -65,7 +58,7 @@
 <body>
   <header>
     <h1>Azalea Bailey</h1>
-    <p class="lead">A winding path through the experiences that shaped me — and where I’m headed next.</p>
+    <p class="lead">A winding path through the experiences that shaped me, and where I might go next.</p>
   </header>
 
   <div class="journey" id="journey">
@@ -82,126 +75,115 @@
 
     <!-- Stops -->
     <div class="stops">
+      <!-- 1 -->
       <div class="stop left">
         <div class="card">
-          <h2>Upstate Roots & The Hudson</h2>
-          <p>I grew up near the Hudson River in upstate New York, where environmentalism was part of everyday life. Those projects sparked my curiosity for evidence and measurement—data science I didn’t yet know I was doing.</p>
-          <div class="media"><img src="images/fish.jpg" alt="Hudson River environmental work (fish.jpg)"></div>
+          <h2>Upstate Roots and the Hudson</h2>
+          <p>I grew up near the Hudson River in upstate New York. I spent a lot of time outside, helping with environmental projects and learning to notice small details. Only later did I realize that I was already bumping into data work. I just did not have the words or tools yet.</p>
+          <div class="media"><img src="images/fish.jpg" alt="Hudson River environmental work"></div>
         </div>
       </div>
 
+      <!-- 2 -->
       <div class="stop right">
         <div class="card">
-          <h2>Seed Scholars & Starting Early</h2>
-          <p>At UC Berkeley I joined the Seed Scholars Honors Program, a community for minoritized students in STEM. Starting early gave me space to explore, ask questions, and find mentors.</p>
-          <div class="media"><img src="images/seed.png" alt="Seed Scholars Honors Program (seed.png)"></div>
+          <h2>Seed Scholars and Starting Early</h2>
+          <p>At UC Berkeley I joined the Seed Scholars Honors Program, a community that supports students who are often underrepresented in STEM. It gave me mentors, confidence, and an early start on campus.</p>
+          <div class="media"><img src="images/seed.png" alt="Seed Scholars Honors Program"></div>
         </div>
       </div>
 
+      <!-- 3 combined -->
       <div class="stop left">
         <div class="card">
-          <h2>Discovering Data Science & Paying It Forward</h2>
-          <p>I discovered data science through <strong>Data&nbsp;6</strong> (my first code!), then deepened it in <strong>Data&nbsp;8</strong> and <strong>Data&nbsp;100</strong>. Those courses shaped how I think about experimentation and evidence. Wanting others to feel that same spark, I became a tutor and later a TA, helping students navigate the very classes that changed my path.</p>
+          <h2>Learning Data Science and Paying It Forward</h2>
+          <p>My first real step was Data 6, where I wrote my first lines of code. That led to Data 8 and Data 100. I began to see how careful thinking, a bit of math, and good questions could turn messy information into something useful. I wanted other students to feel that click, so I tutored and then served as a TA.</p>
           <div class="media media-grid">
-            <img src="images/data6.png" alt="Data 6 Intro Course (data6.png)">
-            <img src="images/data8logo.png" alt="Data 8 Logo (data8logo.png)">
-            <img src="images/data100.png" alt="Data 100 (data100.png)">
-            <img src="images/teaching.jpg" alt="Teaching and mentoring (teaching.jpg)">
+            <img src="images/data6.png" alt="Data 6 Intro Course">
+            <img src="images/data8logo.png" alt="Data 8">
+            <img src="images/data100.png" alt="Data 100">
+            <img src="images/teaching.jpg" alt="Teaching and mentoring">
           </div>
         </div>
       </div>
 
+      <!-- 4 -->
       <div class="stop right">
         <div class="card">
-          <h2>Research: Askademia</h2>
-          <p>As a Data&nbsp;100 TA, I joined research with Professor Narges Norouzi. We built <strong>Askademia</strong>, a real-time AI system for student support—work that earned <strong>Best Paper</strong> at AIED.</p>
-          <p><a href="https://www.springerprofessional.de/en/askademia-a-real-time-ai-system-for-automatic-responses-to-stude/51244754" target="_blank" rel="noopener">Read the paper →</a></p>
-          <div class="media"><img src="images/aied.jpg" alt="Askademia AIED award (aied.jpg)"></div>
+          <h2>Research and Askademia</h2>
+          <p>As a Data 100 TA I joined research with Professor Narges Norouzi. Together we built Askademia, a real time AI system that helps answer student questions. Our paper received Best Paper at AIED, which was a proud and energizing moment.</p>
+          <p><a href="https://www.springerprofessional.de/en/askademia-a-real-time-ai-system-for-automatic-responses-to-stude/51244754" target="_blank" rel="noopener">Read the paper</a></p>
+          <div class="media"><img src="images/aied.jpg" alt="Askademia AIED award"></div>
         </div>
       </div>
 
+      <!-- 5 -->
       <div class="stop left">
         <div class="card">
-          <h2>Into Industry — Autodesk</h2>
-          <p>Research led me to AI agents and a Machine Learning Engineer internship at Autodesk. I worked on agentic systems that supported real teams—hands-on, product-minded AI.</p>
-          <div class="media"><img src="images/autodesk.jpg" alt="Autodesk internship (autodesk.jpg)"></div>
+          <h2>Into Industry at Autodesk</h2>
+          <p>Research opened the door to AI agents, which led to a Machine Learning Engineer internship at Autodesk. I worked on agentic systems for real teams, and I learned how to ship things that people actually use.</p>
+          <div class="media"><img src="images/autodesk.jpg" alt="Autodesk internship"></div>
         </div>
       </div>
 
+      <!-- 6 -->
       <div class="stop right">
         <div class="card">
-          <h2>Service & Music</h2>
-          <p>Alongside engineering, I joined a nonprofit consulting club and partnered with music organizations. I grew up playing trumpet—contributing here felt like coming home.</p>
-          <div class="media"><img src="images/grammy.jpg" alt="Music nonprofit collaborations (grammy.jpg)"></div>
+          <h2>Service and Music</h2>
+          <p>At the same time I joined a nonprofit consulting club. I grew up playing trumpet, so getting to support music organizations felt natural and meaningful. It reminded me how much I like building things that help communities.</p>
+          <div class="media"><img src="images/grammy.jpg" alt="Music nonprofit collaborations"></div>
         </div>
       </div>
 
+      <!-- 7 -->
       <div class="stop left">
         <div class="card">
-          <h2>Practice, Stages, Community</h2>
-          <p>Community and performance shaped my sense of craft—attention to detail, deliberate repetition, and sharing the stage generously.</p>
-          <div class="media"><img src="images/sfjazz.png" alt="SFJAZZ and music community (sfjazz.png)"></div>
+          <h2>Practice, Stages, and Community</h2>
+          <p>Music taught me patience and care. Rehearsal after rehearsal, you notice that small improvements add up. That mindset carries into my work with data and product, where clarity and iteration matter.</p>
+          <div class="media"><img src="images/sfjazz.png" alt="SFJAZZ and music community"></div>
         </div>
       </div>
 
+      <!-- 8 -->
       <div class="stop right">
         <div class="card">
           <h2>Creative Curiosity</h2>
-          <p>I love the intersection of making and meaning—whether in a rehearsal hall or a data notebook. Curiosity is the through-line.</p>
-          <div class="media"><img src="images/boston.jpg" alt="Concert hall / Boston arts (boston.jpg)"></div>
+          <p>I like the space where making meets meaning. Sometimes that looks like a notebook full of experiments. Sometimes it is a show or a small tool that makes someone’s day a little easier.</p>
+          <div class="media"><img src="images/boston.jpg" alt="Concert hall and arts"></div>
         </div>
       </div>
 
+      <!-- 9 -->
       <div class="stop left">
         <div class="card">
-          <h2>Studying Abroad — Italy</h2>
-          <p>Now I’m in Italy taking art classes, applying to roles, and exploring what’s next. It’s a season of learning, building, and seeing with fresh eyes.</p>
-          <div class="media"><img src="images/photo.jpg" alt="Abroad in Italy (photo.jpg)"></div>
+          <h2>Studying Abroad in Italy</h2>
+          <p>Right now I am in Italy taking art classes and applying to roles. I am learning a lot, traveling a bit, and staying open to what comes next.</p>
+          <div class="media"><img src="images/photo.jpg" alt="Abroad in Italy"></div>
         </div>
       </div>
 
+      <!-- 10 -->
       <div class="stop right">
         <div class="card">
-          <h2>Making Things, Sharing Work</h2>
-          <p>Whether code, curriculum, or prints—I like making artifacts that help others. That’s the kind of work I want to keep doing.</p>
-          <div class="media"><img src="images/print.jpg" alt="Art prints and creative work (print.jpg)"></div>
+          <h2>Making Things and Sharing Work</h2>
+          <p>Whether it is code, curriculum, or prints, I like turning ideas into something you can hold or try. I want more of that in my career.</p>
+          <div class="media"><img src="images/print.jpg" alt="Art prints and creative work"></div>
         </div>
       </div>
 
+      <!-- 11 -->
       <div class="stop left">
         <div class="card">
-          <h2>What’s Next</h2>
-          <p>I’m exploring roles where I can bridge AI, product, and pedagogy—shipping helpful, human-centered tools while continuing to learn.</p>
-          <div class="media"><img src="images/teaching.jpg" alt="Continuing to teach and build (teaching.jpg)"></div>
+          <h2>What I Am Exploring Next</h2>
+          <p>I am looking for roles where I can connect AI, product thinking, and learning. I care about clear explanations, useful tools, and teams that like to build.</p>
+          <div class="media"><img src="images/teaching.jpg" alt="Continuing to teach and build"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ALL PHOTOS -->
-  <section class="gallery" aria-labelledby="all-photos">
-    <h2 id="all-photos">All Photos</h2>
-    <p>Every image used on this site, collected in one place.</p>
-    <div class="gallery-grid">
-      <img src="images/fish.jpg" alt="fish.jpg">
-      <img src="images/seed.png" alt="seed.png">
-      <img src="images/data6.png" alt="data6.png">
-      <img src="images/data8logo.png" alt="data8logo.png">
-      <img src="images/data100.png" alt="data100.png">
-      <img src="images/teaching.jpg" alt="teaching.jpg">
-      <img src="images/aied.jpg" alt="aied.jpg">
-      <img src="images/autodesk.jpg" alt="autodesk.jpg">
-      <img src="images/grammy.jpg" alt="grammy.jpg">
-      <img src="images/sfjazz.png" alt="sfjazz.png">
-      <img src="images/boston.jpg" alt="boston.jpg">
-      <img src="images/photo.jpg" alt="photo.jpg">
-      <img src="images/print.jpg" alt="print.jpg">
-    </div>
-  </section>
-
-  <footer>© <span id="y"></span> Azalea Bailey — made with curiosity</footer>
+  <footer>© <span id="y"></span> Azalea Bailey</footer>
   <script>
-    // Year only
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
